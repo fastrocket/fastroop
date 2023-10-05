@@ -15,6 +15,13 @@ Be aware, the installation needs technical skills and is not for beginners. Plea
 
 [Acceleration](https://github.com/s0md3v/roop/wiki/2.-Acceleration) - Unleash the full potential of your CPU and GPU
 
+## Batcher Usage
+
+Create directories: batch-mp4, batch-jpg, and out (these will be added in a future update)
+When you run batcher.py, it will look for images in batch-jpg/ and mp4 videos in batch-mp4, and then
+it will create a new video for every jpg for every mp4 and store the output in out/
+
+```python batcher.py```
 
 ## Usage
 
