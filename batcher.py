@@ -19,6 +19,11 @@ def run_face_swapper(target_dir, source_dir, output_dir, execution_provider, fra
       # Concatenate variables into a filename like {source}-{target}.mp4
       output_filename = os.path.join(output_dir, f"{os.path.basename(source_file)}-{os.path.basename(target_file)}")
 
+      # Skip if the output file already exists
+      if os.path.exists(output_filename):
+        print(f"Skipping {output_filename} because it already exists.")
+        continue
+
       # Run the face swapper
       print(f"python run.py --target {target_file} --source {source_file} -o {output_filename} --execution-provider {execution_provider} --frame-processor {frame_processor}")
       os.system(f"python run.py --target {target_file} --source {source_file} -o {output_filename} --execution-provider {execution_provider} --frame-processor {frame_processor}")
