@@ -25,8 +25,10 @@ def run_face_swapper(target_dir, source_dir, output_dir, execution_provider, fra
         continue
 
       # Run the face swapper
-      print(f"python run.py --target {target_file} --source {source_file} -o {output_filename} --execution-provider {execution_provider} --frame-processor {frame_processor}")
-      os.system(f"python run.py --target {target_file} --source {source_file} -o {output_filename} --execution-provider {execution_provider} --frame-processor {frame_processor}")
+      print(f"python run.py --target {target_file} --source {source_file} -o {output_filename} --execution-provider {execution_provider} --frame-processor {frame_processor} --similar-face-distance 1000")
+      # print(f"python run.py --target {target_file} --source {source_file} -o {output_filename} --execution-provider {execution_provider} --frame-processor {frame_processor} --temp-frame-quality 100 --similar-face-distance 1000")
+      os.system(f"python run.py --target {target_file} --source {source_file} -o {output_filename} --execution-provider {execution_provider} --frame-processor {frame_processor} --similar-face-distance 1000")
+      # os.system(f"python run.py --target {target_file} --source {source_file} -o {output_filename} --execution-provider {execution_provider} --frame-processor {frame_processor} --temp-frame-quality 100 --similar-face-distance 1000")
 
 # Example usage:
 print("Running faceswapper")

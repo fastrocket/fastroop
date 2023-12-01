@@ -32,7 +32,9 @@ def get_one_face(frame: Frame, position: int = 0) -> Optional[Face]:
         try:
             return many_faces[position]
         except IndexError:
+            print(">>>>> get_one_face: IndexError!")
             return many_faces[-1]
+    print(">>>>> get_one_face: no face found")
     return None
 
 
@@ -40,6 +42,7 @@ def get_many_faces(frame: Frame) -> Optional[List[Face]]:
     try:
         return get_face_analyser().get(frame)
     except ValueError:
+        print(">>>>> get_many_faces ValueError!")
         return None
 
 
@@ -51,4 +54,10 @@ def find_similar_face(frame: Frame, reference_face: Face) -> Optional[Face]:
                 distance = numpy.sum(numpy.square(face.normed_embedding - reference_face.normed_embedding))
                 if distance < roop.globals.similar_face_distance:
                     return face
+                else:
+                    print(">>>>> find_similar_face: distance TOO GREAT: ", distance, "similar_face_distance: ", roop.globals.similar_face_distance)
+            else:
+                print(">>>>> find_similar_face: no normed_embedding")
+    else:            
+        print(">>>>> find_similar_face: many_faces is None")
     return None
